@@ -4,7 +4,9 @@ import {
   Statistic, 
   Grid, 
   Segment,
-  Icon
+  Icon,
+  Form,
+  Button
 } from 'semantic-ui-react'
 import './App.css';
 
@@ -85,6 +87,31 @@ function App() {
           </Grid.Row>
         </Grid>
       </Segment>
+
+      <Header as='h1'>Add new transaction</Header>
+      <Form unstackable>
+        <Form.Group>
+          <Form.Input
+            icon='tags'
+            width={12}
+            label='Description'
+            placeholder='new shinney thing'>
+          </Form.Input>
+          <Form.Input
+            width={4}
+            label='Value'
+            placeholder='100.00'
+            icon='dollar'
+            iconPosition='left'>
+          </Form.Input>
+          <Button.Group style={{ marginTop: 20 }}>
+            <Button>Cancel</Button>
+            <Button.Or />
+            <Button primary>ok</Button>
+          </Button.Group>
+        </Form.Group>
+      </Form>
+
 
 
 
