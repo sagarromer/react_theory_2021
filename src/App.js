@@ -12,7 +12,7 @@ import './App.css';
 import ButtonSaveOrCancel from './components/ButtonSaveOrCancel';
 import MainHeader from './components/MainHeader';
 import NewEntryForm from './components/NewEntryForm';
-
+import DisplayBalance from './components/DisplayBalance';
 
 function App() {
   return (
@@ -26,16 +26,10 @@ function App() {
         <Grid columns={2} divided>
           <Grid.Row>
             <Grid.Column>
-              <Statistic size="tiny" color="green">
-                <Statistic.Label style={{textAlign: 'left'}}>Incoming</Statistic.Label>
-                <Statistic.Value>2,555.567</Statistic.Value>
-              </Statistic>
+              <DisplayBalance title='Income' value='1253.54' color='green' />
             </Grid.Column>
             <Grid.Column>
-              <Statistic size="tiny" color="red">
-                <Statistic.Label style={{textAlign: 'right'}}>Expenses</Statistic.Label>
-                <Statistic.Value>2,555.567</Statistic.Value>
-              </Statistic>
+              <DisplayBalance title='Expenses' value='623.50' color='red' />
             </Grid.Column>
           </Grid.Row>
         </Grid>
