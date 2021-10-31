@@ -11,6 +11,7 @@ import {
 import './App.css';
 import ButtonSaveOrCancel from './components/ButtonSaveOrCancel';
 import MainHeader from './components/MainHeader';
+import NewEntryForm from './components/NewEntryForm';
 
 
 function App() {
@@ -92,29 +93,7 @@ function App() {
       </Segment>
 
       <MainHeader title='Add new transaction' type='h3' />
-      <Form unstackable>
-        <Form.Group>
-          <Form.Input
-            icon='tags'
-            width={12}
-            label='Description'
-            placeholder='new shinney thing'>
-          </Form.Input>
-          <Form.Input
-            width={4}
-            label='Value'
-            placeholder='100.00'
-            icon='dollar'
-            iconPosition='left'>
-          </Form.Input>
-          <ButtonSaveOrCancel />
-        </Form.Group>
-      </Form>
-
-
-
-
-
+      <NewEntryForm />
     </Container>
   );
 }
