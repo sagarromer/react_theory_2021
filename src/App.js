@@ -8,9 +8,19 @@ import NewEntryForm from './components/NewEntryForm';
 import DisplayBalance from './components/DisplayBalance';
 import DisplayBalances from './components/DisplayBalances';
 import EntryLine from './components/EntryLine';
+import EntryLines from './components/EntryLines';
 
 function App() {
   const [entries, setEntries] = useState(initialEntries);
+
+  function deleteEntry(id){
+    const result = entries.filter((entry) => entry.id !== id);
+    console.log('entries', entries);
+    console.log('result', result);
+    setEntries(result);
+    
+  }
+
   return (
     <Container>
       <MainHeader title='Budget' />
@@ -19,15 +29,11 @@ function App() {
       <DisplayBalances />
 
       <MainHeader title='History' type='h3' />
-      {
-        entries.map((entry) => (
-          <EntryLine
-            description={entry.description}
-            value={entry.value}
-            isExpense={entry.isExpense}
-          />
-        ))
-      }
+      <EntryLines
+        entries={entries}
+        deleteEntry={deleteEntry}
+        
+      />
       <MainHeader title='Add new transaction' type='h3' />
       <NewEntryForm />
     </Container>
