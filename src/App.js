@@ -20,6 +20,14 @@ function App() {
     setEntries(result);
     
   }
+  function addEntry(description, value) {
+    const result = entries.concat({
+      id: entries.length + 1,
+      description,
+      value
+    });
+    setEntries(result);
+  }
 
   return (
     <Container>
@@ -35,7 +43,7 @@ function App() {
         
       />
       <MainHeader title='Add new transaction' type='h3' />
-      <NewEntryForm />
+      <NewEntryForm addEntry={addEntry} />
     </Container>
   );
 }
