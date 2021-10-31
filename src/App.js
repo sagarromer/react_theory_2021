@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { 
   Container
 } from 'semantic-ui-react'
@@ -9,6 +10,7 @@ import DisplayBalances from './components/DisplayBalances';
 import EntryLine from './components/EntryLine';
 
 function App() {
+  const [entries, setEntries] = useState(initialEntries);
   return (
     <Container>
       <MainHeader title='Budget' />
@@ -17,7 +19,9 @@ function App() {
       <DisplayBalances />
 
       <MainHeader title='History' type='h3' />
-      <EntryLine description='income' value='$10.00' />
+      <EntryLine 
+        description={entries[0].description} 
+        value={entries[0].isExpense } />
       <EntryLine description='expense' value='$10.00' isExpense />
 
       <MainHeader title='Add new transaction' type='h3' />
@@ -27,3 +31,30 @@ function App() {
 }
 
 export default App;
+
+var initialEntries = [
+  {
+    id: 1,
+    description: 'Work income',
+    value: 1000.0,
+    isExpense: false,
+  },
+  {
+    id: 2,
+    description: 'Water bill',
+    value: 20.0,
+    isExpense: true,
+  },
+  {
+    id: 3,
+    description: 'Rent',
+    value: 300,
+    isExpense: true,
+  },
+  {
+    id: 4,
+    description: 'Power bill',
+    value: 50,
+    isExpense: true,
+  },
+];
