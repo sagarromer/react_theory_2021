@@ -9,6 +9,7 @@ import {
   Button
 } from 'semantic-ui-react'
 import './App.css';
+import ButtonSaveOrCancel from './components/ButtonSaveOrCancel';
 import MainHeader from './components/MainHeader';
 
 
@@ -106,11 +107,7 @@ function App() {
             icon='dollar'
             iconPosition='left'>
           </Form.Input>
-          <Button.Group style={{ marginTop: 20 }}>
-            <Button>Cancel</Button>
-            <Button.Or />
-            <Button primary>ok</Button>
-          </Button.Group>
+          <ButtonSaveOrCancel />
         </Form.Group>
       </Form>
 
