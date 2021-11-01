@@ -7,11 +7,16 @@ import MainHeader from './components/MainHeader';
 import NewEntryForm from './components/NewEntryForm';
 import DisplayBalance from './components/DisplayBalance';
 import DisplayBalances from './components/DisplayBalances';
-import EntryLine from './components/EntryLine';
 import EntryLines from './components/EntryLines';
+import ModalEdit from './components/ModalEdit';
 
 function App() {
   const [entries, setEntries] = useState(initialEntries);
+  const [description, setDescription] = useState('');
+  const [value, setValue] =useState('');
+  const [isExpense, setIsExpense] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
+
 
   function deleteEntry(id){
     const result = entries.filter((entry) => entry.id !== id);
@@ -41,10 +46,19 @@ function App() {
       <EntryLines
         entries={entries}
         deleteEntry={deleteEntry}
-        
+        setIsOpen={setIsOpen}
       />
       <MainHeader title='Add new transaction' type='h3' />
-      <NewEntryForm addEntry={addEntry} />
+      <NewEntryForm 
+        addEntry={addEntry}
+        description={description}
+        value={value}
+        isExpense={isExpense}
+        setDescription={setDescription}
+        setValue={setValue}
+        setIsExpense={setIsExpense} 
+      />
+      <ModalEdit isOpen={isOpen} setIsopen={setIsOpen}/>
     </Container>
   );
 }

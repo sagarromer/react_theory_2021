@@ -1,9 +1,8 @@
-import React, { Fragment, useState} from 'react';
+import React, { Fragment } from 'react';
 import { Grid, Icon, Segment } from 'semantic-ui-react';
-import ModalEdit from './ModalEdit';
 
-function EntryLine({ id, description, value, isExpense = false, deleteEntry }) {
-    const [isOpen, setIsOpen] = useState(false);
+function EntryLine({ id, description, value, isExpense = false, deleteEntry, setIsOpen }) {
+
     return (
         <Fragment>
             <Segment color={isExpense ? 'red' : 'green'}>
@@ -16,13 +15,13 @@ function EntryLine({ id, description, value, isExpense = false, deleteEntry }) {
                         {value}
                     </Grid.Column>
                     <Grid.Column width={3}>
-                        <Icon name='edit' bordered onClick={() => setIsOpen(!isOpen)}/>
+                        <Icon name='edit' bordered onClick={() => setIsOpen(true)}/>
                         <Icon name='trash' bordered onClick={() => deleteEntry(id)}/>
                     </Grid.Column>
                     </Grid.Row>
                 </Grid>
             </Segment>
-            <ModalEdit isOpen={isOpen} setIsOpen={setIsOpen} />
+            
         </Fragment>
     );
 }
