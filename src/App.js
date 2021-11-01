@@ -9,6 +9,7 @@ import DisplayBalance from './components/DisplayBalance';
 import DisplayBalances from './components/DisplayBalances';
 import EntryLines from './components/EntryLines';
 import ModalEdit from './components/ModalEdit';
+import {createStore} from 'redux';
 
 function App() {
   const [entries, setEntries] = useState(initialEntries);
@@ -21,6 +22,28 @@ function App() {
   const [expenseTotal, setExpenseTotal] = useState(0);
   const [total, setTotal] = useState(0);
 
+  const store = createStore((state = initialEntries, action) => {
+    console.log(action);
+    switch (action.type) {
+      case 'ADD_ENTRY': 
+        const newEntries = entries.concat({
+          id: 5,
+          description: "hello from redux",
+          isExpense: false
+        })
+        return newEntries;
+        break;
+
+      default:
+      return state;
+    }
+    
+    
+  });
+  console.log(store.getState());
+  store.dispatch({ type: 'ADD_ENTRY'});
+  console.log('store after: ', store.getState());
+  
   
 
   useEffect(() => {
@@ -32,6 +55,7 @@ function App() {
       newEntries[index].isExpense = isExpense;
       setEntries(newEntries);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen]);
   useEffect(() => {
     let totalIncomes = 0;
@@ -42,7 +66,7 @@ function App() {
       }
       return (totalIncomes += Number(entry.value))
     });
-    let total = totalIncomes - totalExpenses;
+    //let total = totalIncomes - totalExpenses;
     console.log(`total incomes are : ${totalIncomes}
     total expenses are ${totalExpenses}`);
     setTotal(totalIncomes - totalExpenses);
