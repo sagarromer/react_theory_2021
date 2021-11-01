@@ -45,6 +45,12 @@ function App() {
       isExpense
     });
     setEntries(result);
+    resetEntry();
+  }
+  function resetEntry() {
+    setDescription('');
+    setValue('');
+    setIsExpense(true);
   }
   function editEntry(id){
     console.log('edit entry');
