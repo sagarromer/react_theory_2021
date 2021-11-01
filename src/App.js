@@ -28,7 +28,20 @@ function App() {
       setEntries(newEntries);
     }
   }, [isOpen]);
-
+  useEffect(() => {
+    let totalIncomes = 0;
+    let totalExpenses = 0;
+    entries.map((entry) => {
+      if (entry.isExpense) {
+        return (totalExpenses += entry.value);
+      }
+      return (totalIncomes += entry.value)
+    });
+    let total = totalIncomes - totalExpenses;
+    console.log(`total incomes are : ${totalIncomes}
+    total expenses are ${totalExpenses}`);
+    
+  }, [entries]);
 
   function deleteEntry(id){
     const result = entries.filter((entry) => entry.id !== id);
