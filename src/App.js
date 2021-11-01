@@ -26,13 +26,12 @@ function App() {
     console.log(action);
     switch (action.type) {
       case 'ADD_ENTRY': 
-        const newEntries = entries.concat({
+        const newEntries = state.concat({
           id: 5,
           description: "hello from redux",
           isExpense: false
         })
         return newEntries;
-        break;
 
       default:
       return state;
@@ -41,6 +40,10 @@ function App() {
     
   });
   console.log(store.getState());
+  store.subscribe(() => {
+    console.log('store: ',store.getState());
+    
+  });
   const payload = {
     id: 5,
     description: 'hello from redux',
