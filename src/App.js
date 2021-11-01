@@ -34,6 +34,17 @@ function App() {
     });
     setEntries(result);
   }
+  function editEntry(id){
+    console.log('edit entry');
+    if(id) {
+      const index =entries.findIndex(entry => entry.id);
+      const entry = entries[index];
+      setDescription(entry.description);
+      setValue(entry.value);
+      setIsOpen(true);
+    }
+    
+  }
 
   return (
     <Container>
@@ -45,8 +56,8 @@ function App() {
       <MainHeader title='History' type='h3' />
       <EntryLines
         entries={entries}
-        deleteEntry={deleteEntry}
-        setIsOpen={setIsOpen}
+        deleteEntry={deleteEntry} 
+        editEntry={editEntry}
       />
       <MainHeader title='Add new transaction' type='h3' />
       <NewEntryForm 
@@ -58,7 +69,17 @@ function App() {
         setValue={setValue}
         setIsExpense={setIsExpense} 
       />
-      <ModalEdit isOpen={isOpen} setIsopen={setIsOpen}/>
+      <ModalEdit 
+        isOpen={isOpen} 
+        setIsopen={setIsOpen}
+        addEntry={addEntry}
+        description={description}
+        value={value}
+        isExpense={isExpense}
+        setDescription={setDescription}
+        setValue={setValue}
+        setIsExpense={setIsExpense} 
+      />
     </Container>
   );
 }

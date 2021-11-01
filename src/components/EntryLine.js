@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { Grid, Icon, Segment } from 'semantic-ui-react';
 
-function EntryLine({ id, description, value, isExpense = false, deleteEntry, setIsOpen }) {
+function EntryLine({ id, description, value, isExpense = false, deleteEntry, editEntry }) {
 
     return (
         <Fragment>
@@ -15,7 +15,7 @@ function EntryLine({ id, description, value, isExpense = false, deleteEntry, set
                         {value}
                     </Grid.Column>
                     <Grid.Column width={3}>
-                        <Icon name='edit' bordered onClick={() => setIsOpen(true)}/>
+                        <Icon name='edit' bordered onClick={() => editEntry(true)}/>
                         <Icon name='trash' bordered onClick={() => deleteEntry(id)}/>
                     </Grid.Column>
                     </Grid.Row>

@@ -2,7 +2,7 @@ import React from 'react';
 import { Container } from 'semantic-ui-react';
 import EntryLine from './EntryLine';
 
-function EntryLines({ entries, deleteEntry, editEntry, setIsOpen }) {
+function EntryLines({ entries, deleteEntry, editEntry }) {
     return (
         <Container>
         {entries.map((entry) => (
@@ -11,7 +11,7 @@ function EntryLines({ entries, deleteEntry, editEntry, setIsOpen }) {
             {...entry}
             deleteEntry={deleteEntry}
             editEntry={editEntry}
-            setIsOpen={setIsOpen}
+            
             />
         ))}
         </Container>
