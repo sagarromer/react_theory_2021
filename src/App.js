@@ -41,7 +41,13 @@ function App() {
     
   });
   console.log(store.getState());
-  store.dispatch({ type: 'ADD_ENTRY'});
+  const payload = {
+    id: 5,
+    description: 'hello from redux',
+    value: 999,
+    isExpense: true
+  }
+  store.dispatch({ type: 'ADD_ENTRY', payload});
   console.log('store after: ', store.getState());
   
   
