@@ -9,6 +9,7 @@ import DisplayBalance from './components/DisplayBalance';
 import DisplayBalances from './components/DisplayBalances';
 import EntryLines from './components/EntryLines';
 import ModalEdit from './components/ModalEdit';
+import { useDispatch, useSelector } from 'react-redux';
 
 
 function App() {
@@ -21,6 +22,8 @@ function App() {
   const [incomeTotal, setIncomeTotal] = useState(0);
   const [expenseTotal, setExpenseTotal] = useState(0);
   const [total, setTotal] = useState(0);
+  const entriesRedux = useSelector((state) => state.entries);
+
 
   // const payload_add = {
   //   id: 5,
@@ -118,7 +121,7 @@ function App() {
 
       <MainHeader title='History' type='h3' />
       <EntryLines
-        entries={entries}
+        entries={entriesRedux}
         deleteEntry={deleteEntry} 
         editEntry={editEntry}
       />
