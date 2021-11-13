@@ -13,7 +13,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 
 function App() {
-  const [entries, setEntries] = useState([]);
+  //const [entries, setEntries] = useState([]);
   const [description, setDescription] = useState('');
   const [value, setValue] =useState('');
   const [isExpense, setIsExpense] = useState(true);
@@ -22,7 +22,7 @@ function App() {
   const [incomeTotal, setIncomeTotal] = useState(0);
   const [expenseTotal, setExpenseTotal] = useState(0);
   const [total, setTotal] = useState(0);
-  const entriesRedux = useSelector((state) => state.entries);
+  const entries = useSelector((state) => state.entries);
 
 
   // const payload_add = {
@@ -42,7 +42,7 @@ function App() {
       newEntries[index].description = description;
       newEntries[index].value = value;
       newEntries[index].isExpense = isExpense;
-      setEntries(newEntries);
+      //setEntries(newEntries);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen]);
@@ -82,7 +82,7 @@ function App() {
     const result = entries.filter((entry) => entry.id !== id);
     console.log('entries', entries);
     console.log('result', result);
-    setEntries(result);
+    //setEntries(result);
     
   }
   function addEntry(description, value, isExpense) {
@@ -92,7 +92,7 @@ function App() {
       value,
       isExpense
     });
-    setEntries(result);
+    //setEntries(result);
     resetEntry();
   }
   function resetEntry() {
@@ -121,7 +121,7 @@ function App() {
 
       <MainHeader title='History' type='h3' />
       <EntryLines
-        entries={entriesRedux}
+        entries={entries}
         deleteEntry={deleteEntry} 
         editEntry={editEntry}
       />
