@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { 
   Container
-} from 'semantic-ui-react'
+} from 'semantic-ui-react';
 import './App.css';
 import MainHeader from './components/MainHeader';
 import NewEntryForm from './components/NewEntryForm';
