@@ -9,10 +9,10 @@ import DisplayBalance from './components/DisplayBalance';
 import DisplayBalances from './components/DisplayBalances';
 import EntryLines from './components/EntryLines';
 import ModalEdit from './components/ModalEdit';
-import {createStore} from 'redux';
+
 
 function App() {
-  const [entries, setEntries] = useState(initialEntries);
+  const [entries, setEntries] = useState([]);
   const [description, setDescription] = useState('');
   const [value, setValue] =useState('');
   const [isExpense, setIsExpense] = useState(true);
@@ -22,46 +22,15 @@ function App() {
   const [expenseTotal, setExpenseTotal] = useState(0);
   const [total, setTotal] = useState(0);
 
-  const store = createStore((state = initialEntries, action) => {
-    console.log(action);
-    let newEntries;
-    switch (action.type) {
-      case 'ADD_ENTRY': 
-        newEntries = state.concat({
-          id: 5,
-          description: "hello from redux",
-          isExpense: false
-        })
-        return newEntries;
-      case 'REMOVE_ENTRY': 
-        newEntries = state.filter((entrv) => entrv.id !== action.payload.id);
-        return newEntries;
-
-      default:
-      return state;
-    }
-    
-    
-  });
-  console.log(store.getState());
-  store.subscribe(() => {
-    console.log('store: ',store.getState());
-    
-  });
-  const payload_add = {
-    id: 5,
-    description: 'hello from redux',
-    value: 999,
-    isExpense: true
-  };
-  const payload_remove = {
-    id: 1
-  }
-  store.dispatch({ type: 'ADD_ENTRY', payload_add});
-  store.dispatch({ type: 'REMOVE_ENTRY', payload_remove});
-  console.log('store after: ', store.getState());
-  
-  
+  // const payload_add = {
+  //   id: 5,
+  //   description: 'hello from redux',
+  //   value: 999,
+  //   isExpense: true
+  // };
+  // const payload_remove = {
+  //   id: 1
+  // }
 
   useEffect(() => {
     if(!isOpen && entryId){
@@ -91,6 +60,20 @@ function App() {
     setIncomeTotal(totalIncomes);
     
   }, [entries]);
+
+  // function addEntryRedux(payload) {
+  //   return { type: 'ADD_ENTRY', payload };
+  // }
+
+  // function removeEntryRedux(id){
+  //   return { type: 'REMOVE_ENTRY', payload: { id } };
+  // }
+  // store.dispatch(addEntryRedux(payload_add));
+  // store.dispatch(removeEntryRedux(1));
+  // store.dispatch(removeEntryRedux(2));
+  // store.dispatch(removeEntryRedux(3));
+  // store.dispatch(removeEntryRedux(4));
+  // store.dispatch(removeEntryRedux(5));
 
   function deleteEntry(id){
     const result = entries.filter((entry) => entry.id !== id);
@@ -165,30 +148,3 @@ function App() {
 }
 
 export default App;
-
-var initialEntries = [
-  {
-    id: 1,
-    description: 'Work income',
-    value: 1000.0,
-    isExpense: false,
-  },
-  {
-    id: 2,
-    description: 'Water bill',
-    value: 20.0,
-    isExpense: true,
-  },
-  {
-    id: 3,
-    description: 'Rent',
-    value: 300,
-    isExpense: true,
-  },
-  {
-    id: 4,
-    description: 'Power bill',
-    value: 50,
-    isExpense: true,
-  },
-];
