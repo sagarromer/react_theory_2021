@@ -27,7 +27,7 @@ function App() {
     setEntry(entries[index]);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  , [isOpen, id]);
+  , [isOpen, id, entries]);
   useEffect(() => {
     let totalIncomes = 0;
     let totalExpenses = 0;
